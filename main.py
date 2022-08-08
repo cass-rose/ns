@@ -1,6 +1,8 @@
 from getnats import getDict
 import json
 from time import sleep
+import PySimpleGUI as gui
+import requests
 
 def setup(headers, template, main):
     print(f"Welcome, {main}! Let's get started!")
@@ -29,10 +31,9 @@ def main():
             info= json.load(f)
             main=info["main"]
             template=info["template"]
-
-    except json.decoder.JSONDecodeError:
-        print("The file is incorrect!")
-        return
+    except FileNotFoundError:
+        with open("config.json", "w", encoding="utf-8") as json_file:
+            json_file.write(requests.get("https://gist.githubusercontent.com/cass-rose/f5c22bf635af4f08d8f130bf2279b3cc/raw/1883044c3b6fb09a6d69d108e46b50dcc904237b/config.json").text)
     if "code" in template:
         print("Please put your template code in the config.json file.")
         quit()
@@ -40,5 +41,5 @@ def main():
         'User-agent': f'Snag, by Synstylae(https://github.com/cass-rose/ns), nation running the script is : https://www.nationstates.net/nation={main}.'}
 
     setup(headers, template, main)
-
-main()
+if __name__ == '__main__':
+    main()

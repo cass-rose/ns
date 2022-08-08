@@ -4,16 +4,18 @@ import xmltodict
 import re
 
 def getDict(headers={'User-agent': f'Snag, by Synstylae(https://github.com/cass-rose/ns), No nation data is available.'}):
-    response = requests.get(
-        "https://www.nationstates.net/cgi-bin/api.cgi?q=happenings;filter=founding", headers=headers
-    )
+    response = requests.get("https://www.nationstates.net/cgi-bin/api.cgi?q=happenings;filter=founding", headers=headers)
     treeDict=xmltodict.parse(response.content)
     natHapps=treeDict['WORLD']['HAPPENINGS']['EVENT']
     d=0
     nations=[]
     temp=''
-    with open("last.txt", "r") as f:
-        last=f.read()
+    try:
+        with open('last.txt', 'r') as f:
+            last=f.read()
+    except FileNotFoundError:
+        open('last.txt','w').close()
+        last=''
     notUsed=True
     for hap in natHapps:
         d+=1
@@ -29,9 +31,10 @@ def getDict(headers={'User-agent': f'Snag, by Synstylae(https://github.com/cass-
             with open("last.txt", "w") as f:
                 f.write(nat)
     return nations
-#
-# def main():
-#     nats=getDict()
-#     print(nats)
-# #
-# main()
+
+def main():
+    nats=getDict()
+    print(nats)
+
+if __name__ == '__main__':
+    main()
