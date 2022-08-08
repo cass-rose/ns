@@ -7,8 +7,8 @@ Also I'm bad at coding so uh. No promises.
 ________________________________________________________________________________________________________________________________________________________________
 
 ###Required Packages:
-requests
-re
-xmltodict
-json
-time
+>requests,
+>re,
+>xmltodict,
+>json,
+>time
