@@ -22,7 +22,6 @@ def getDict(headers={'User-agent': 'Synstylae: (https://github.com/cass-rose/ns)
         if (d%8)==0:
             nations.append(temp)
             temp=''
-
     return nations
 
 def main():
