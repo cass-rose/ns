@@ -4,11 +4,6 @@ Basically this is a program to grab nations from NationState API's founding shar
 Requires Python to run. 
 Also I'm bad at coding so uh. No promises.
 
-________________________________________________________________________________________________________________________________________________________________
 
-###Required Packages:
->requests,
->re,
->xmltodict,
->json,
->time
+### Required Packages:
+See requirements.txt
