@@ -1,0 +1,6 @@
+requests
+re
+xmltodict
+json
+time
+pysimplegui
